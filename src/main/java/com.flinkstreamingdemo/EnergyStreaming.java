@@ -16,9 +16,9 @@ import java.util.Properties;
 public class EnergyStreaming {
 
     private static final Properties prop = new Properties();
-    private static final String BOOTSTRAP = "10.192.11.83:9092";
-    private static final String GROUP_ID = "ems_energy";
-    private static final String ZOOKEEPER = "10.192.11.83:2181";
+    private static final String BOOTSTRAP = "ip:port";
+    private static final String GROUP_ID = "group_name";
+    private static final String ZOOKEEPER = "ip:port";
     // kafka的partition分区
     private static final Integer partition = 0;
     // 序列化的方式
@@ -42,12 +42,9 @@ public class EnergyStreaming {
         env.setRuntimeMode(RuntimeExecutionMode.AUTOMATIC);
         env.setParallelism(1);
 
-        // 需要消费的能源topics列表，能源种类分别对应电力、水、天然气、压缩空气
+        // 添加消费的topic列表
         List<String> topics = new LinkedList<>();
-        topics.add("ems_electric_energy");
-        topics.add("ems_water_meter");
-        topics.add("ems_natural_gas");
-        topics.add("ems_compressed_air");
+        topics.add("topic_name");
 
         FlinkKafkaConsumer<String> consumer = new FlinkKafkaConsumer<>(
                 topics, new SimpleStringSchema(), prop);
@@ -63,7 +60,7 @@ public class EnergyStreaming {
         energyMySQL.addSink(new WriteMysqlSink());
 
         try {
-            env.execute("electric energy parsing to mysql job");
+            env.execute("flink parsing json to mysql job");
         } catch (Exception e) {
             e.printStackTrace();
         }
