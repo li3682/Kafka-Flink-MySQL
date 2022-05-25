@@ -19,7 +19,7 @@ public class WriteMysqlSink extends RichSinkFunction<String> implements SinkFunc
     public void open(Configuration parameters) throws Exception {
         log.info("获取数据库连接");
         connection = DbUtils.getConnection();
-        String replaceSQL = "replace into dwd_ems_energy_bi(meter_parameter, channels, create_time) values (?, ?, ?);";
+        String replaceSQL = "replace into table_name(a, b, c) values (?, ?, ?);";
         ps = connection.prepareStatement(replaceSQL);
     }
 
