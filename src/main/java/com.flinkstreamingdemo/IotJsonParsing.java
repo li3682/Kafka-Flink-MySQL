@@ -1,4 +1,4 @@
-package com.xiaopeng;
+package com.flinkstreamingdemo;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
