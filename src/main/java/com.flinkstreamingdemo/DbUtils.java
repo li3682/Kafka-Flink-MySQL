@@ -1,4 +1,4 @@
-package com.xiaopeng;
+package com.flinkstreamingdemo;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
