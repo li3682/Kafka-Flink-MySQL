@@ -41,7 +41,7 @@ public class IotJsonParsing {
     }
 
     public static void main(String[] args){
-        String energyJson = "{\"gwCode\":\"1234567891\",\"devices\":[{\"deviceId\":1,\"channels\":[{\"positiveActiveElectricEnergy\":215928,\"positiveReactiveEnergy\":84181,\"apparentElectricEnergy\":250257,\"reverseActiveEnergy\":0,\"reverseReactiveEnergy\":30988,\"channelId\":1,\"createTime\":1652422897000}]},{\"deviceId\":2,\"channels\":[{\"positiveActiveElectricEnergy\":215928,\"positiveReactiveEnergy\":84181,\"apparentElectricEnergy\":250257,\"reverseActiveEnergy\":0,\"reverseReactiveEnergy\":30988,\"channelId\":2,\"createTime\":1652422897000}]}]}";
+        String energyJson = "";
         ArrayList<ArrayList<Object>> res = parsing(energyJson);
         for (ArrayList<Object> r: res) {
             System.out.println(r.get(0));
