@@ -13,23 +13,23 @@ public class IotJsonParsing {
         JSONObject obj = JSON.parseObject(iotData);
         ArrayList<ArrayList<Object>> res = new ArrayList<>();
 
-        String gwCode = (String) obj.get("deviceCode");
+        String deviceCode = (String) obj.get("deviceCode");
         JSONArray devices =JSONArray.parseArray(obj.getString("devices"));
         for(int i = 0; i < devices.size(); i++) {
 
             JSONObject device = devices.getJSONObject(i);
             String deviceId = device.getString("deviceId");
-            JSONArray channels = JSONArray.parseArray(device.getString("channels"));
+            JSONArray iotDataArray = JSONArray.parseArray(device.getString("iotDataArray"));
 
             for(int j = 0; j < channels.size(); j++){
                 JSONObject channel = channels.getJSONObject(j);
-                String channelId = channel.getString("channelId");
+                String iotDataArrayId = channel.getString("iotDataArrayId");
                 Timestamp createTime = channel.getTimestamp("createTime");
-                String channelString = channels.getString(j);
+                String iotDataArrayString = channels.getString(j);
 
                 ArrayList<Object> temp = new ArrayList<>();
-                temp.add(0, gwCode + '_' + deviceId + '_' + channelId);
-                temp.add(1, channelString);
+                temp.add(0, deviceCode + '_' + deviceId + '_' + iotDataArrayId);
+                temp.add(1, iotDataArrayString);
                 temp.add(2, createTime);
 
                 res.add(i, temp);
