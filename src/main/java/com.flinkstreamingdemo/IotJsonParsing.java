@@ -13,7 +13,7 @@ public class IotJsonParsing {
         JSONObject obj = JSON.parseObject(iotData);
         ArrayList<ArrayList<Object>> res = new ArrayList<>();
 
-        String gwCode = (String) obj.get("gwCode");
+        String gwCode = (String) obj.get("deviceCode");
         JSONArray devices =JSONArray.parseArray(obj.getString("devices"));
         for(int i = 0; i < devices.size(); i++) {
 
